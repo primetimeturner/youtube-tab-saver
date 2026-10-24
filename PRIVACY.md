@@ -39,4 +39,4 @@ Removing the extension deletes all of this.
 
 ## Contact
 
-Questions or problems: open an issue at https://github.com/primetimeturner/tab-saver-for-youtube/issues
+Questions or problems: open an issue at https://github.com/primetimeturner/youtube-tab-saver/issues
