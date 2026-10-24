@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Saver for YouTube",
+  "version": "1.10.1",
+  "description": "Save your open YouTube tabs - including their queues - into a playlist, then close the ones you choose.",
+  "minimum_chrome_version": "102",
+  "permissions": [
+    "tabs",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YouTube Tab Saver"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

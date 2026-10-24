@@ -1,0 +1,346 @@
+html, body {
+  width: 360px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #0f0f0f;
+  color: #f1f1f1;
+}
+
+#mainView, #closeModalView {
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+#closeModalView {
+  display: none;
+}
+
+h2, h3 {
+  margin-top: 0;
+  color: #ff0000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h2 { font-size: 18px; }
+h3 { font-size: 15px; margin-bottom: 10px; }
+
+.input-group {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: #aaa;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: background-color 0.2s;
+}
+
+#scanBtn {
+  background-color: #272727;
+  color: #fff;
+}
+#scanBtn:hover {
+  background-color: #3f3f3f;
+}
+
+#saveBtn {
+  background-color: #cc0000;
+  color: #fff;
+}
+#saveBtn:hover {
+  background-color: #ff0000;
+}
+
+#closeBtn {
+  background-color: #333;
+  color: #ff4e4e;
+  border: 1px solid #ff4e4e;
+}
+#closeBtn:hover {
+  background-color: #440000;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#status {
+  font-size: 12px;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+  word-wrap: break-word;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: #333;
+  border-radius: 4px;
+  height: 8px;
+  margin-top: 8px;
+  overflow: hidden;
+  display: none;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #00e676;
+  transition: width 0.3s;
+}
+
+/* Modal tree layout */
+.stats-summary {
+  font-size: 11px;
+  color: #aaa;
+  margin-bottom: 8px;
+  background: #1a1a1a;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#modalStatsText {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Warning button (top right): tabs where something was not saved. Highlighted while all of them are selected. */
+.warn-btn {
+  flex: none;
+  width: auto;
+  height: 24px;
+  margin: 0;
+  padding: 0 8px 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1.5px solid #ffb300;
+  border-radius: 12px;
+  background: #222;
+  color: #ffb300;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.warn-btn[hidden] {
+  display: none;
+}
+.warn-btn:hover {
+  background-color: #333;
+}
+.warn-btn.is-on {
+  background-color: #4a3600;
+}
+.warn-btn.is-on:hover {
+  background-color: #5c4400;
+}
+.warn-btn svg {
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+/* Warning icon beside a tab where something was not saved (same spot as the speaker icon) */
+.tab-warning {
+  flex: none;
+  width: 12px;
+  height: 12px;
+}
+.warn-tri {
+  fill: #ffb300;
+  stroke: #ffb300;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+.warn-mark {
+  fill: none;
+  stroke: #141414;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+
+.modal-body-container {
+  display: flex;
+  align-items: flex-start; /* a short tab list sits at the top, beside the full-height button column */
+  gap: 8px;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.tab-tree {
+  flex-grow: 1;
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  background: #141414;
+  padding: 6px;
+}
+
+.scroll-nav-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 254px; /* the tab list's full height (240px + padding + border), so the column lines up with it */
+}
+
+.scroll-nav-btn {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #333;
+  background: #222;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+
+.scroll-nav-btn:hover {
+  background-color: #333;
+}
+
+.scroll-nav-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+/* Section jump buttons (top and bottom of the column) */
+.scroll-nav-btn.nav-jump {
+  border: 1.5px solid #3ea6ff;
+  color: #3ea6ff;
+}
+
+/* On/off buttons while all their tabs are selected */
+.scroll-nav-btn.is-on {
+  background-color: #173a5c;
+  border-color: #3ea6ff;
+  color: #3ea6ff;
+}
+.scroll-nav-btn.is-on:hover {
+  background-color: #1d4a75;
+}
+
+/* Duplicates button: off = both squares plain, extras = back square blue, all = both blue */
+.scroll-nav-btn .dup-back,
+.scroll-nav-btn .dup-front {
+  fill: #222;
+  stroke-width: 1.8;
+}
+#dupesBtn[data-state="extras"] .dup-back,
+#dupesBtn[data-state="all"] .dup-back {
+  fill: #3ea6ff;
+  stroke: #3ea6ff;
+}
+#dupesBtn[data-state="all"] .dup-front {
+  fill: #3ea6ff;
+  stroke: #222;
+}
+
+/* Invert button: one arrow highlighted in yellow; the highlight swaps each time the selection is inverted */
+#invertBtn[data-state="top"] .inv-top,
+#invertBtn[data-state="bottom"] .inv-bottom {
+  stroke: #ffd54f;
+}
+
+/* Tab that is playing sound (left unchecked by default) */
+.tab-playing {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: #3ea6ff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.window-group {
+  margin-bottom: 8px;
+  background: #1e1e1e;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.window-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+.header-video { color: #3ea6ff; }
+.header-incognito { color: #b388ff; }
+.header-nonvideo { color: #ffb74d; }
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  padding: 3px 0 3px 6px;
+  color: #ccc;
+}
+
+.tab-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+.btn-confirm-delete {
+  background-color: #cc0000;
+  color: #fff;
+}
+
+.btn-cancel {
+  background-color: #272727;
+  color: #ccc;
+}

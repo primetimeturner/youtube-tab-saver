@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+  <!-- Main Default View -->
+  <div id="mainView">
+    <h2>YouTube Tab Saver</h2>
+
+    <div class="input-group">
+      <label for="playlistTitle">Playlist Name</label>
+      <input type="text" id="playlistTitle">
+    </div>
+
+    <button id="scanBtn">Scan YouTube Tabs</button>
+    <button id="saveBtn" disabled>Create Playlist & Save Tabs</button>
+    <button id="closeBtn" disabled>Close Processed Tabs</button>
+
+    <div class="progress-bar-container" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div id="status">Click "Scan YouTube Tabs" to start.</div>
+  </div>
+
+  <!-- Separate Modal View for Closing Tabs -->
+  <div id="closeModalView">
+    <h3>Close YouTube Tabs</h3>
+    <div class="stats-summary" id="modalStats"><span id="modalStatsText"></span><button id="warnBtn" class="warn-btn" hidden title="Select the tabs where something was not saved" aria-label="Tabs where something was not saved"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="warn-tri" d="M12 3L2 21h20L12 3z"/><path class="warn-mark" d="M12 10v4.5M12 17.6v.1"/></svg><span id="warnCount"></span></button></div>
+    
+    <div class="modal-body-container">
+      <div class="tab-tree" id="tabTree"></div>
+      <div class="scroll-nav-controls">
+        <button id="scrollUpBtn" class="scroll-nav-btn nav-jump" title="Previous Section" aria-label="Previous Section"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11l5-5 5 5M7 17l5-5 5 5"/></svg></button>
+        <button id="selectAllBtn" class="scroll-nav-btn" title="Select all" aria-label="Select all"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12l5 5L22 7M2 12l5 5M12 12l5-5"/></svg></button>
+        <button id="dupesBtn" class="scroll-nav-btn" data-state="off" title="Duplicates: select extra copies" aria-label="Duplicates"><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="dup-back" x="9" y="3" width="12" height="12" rx="2"/><rect class="dup-front" x="3" y="9" width="12" height="12" rx="2"/></svg></button>
+        <button id="nonVideoBtn" class="scroll-nav-btn" title="Select non-video tabs" aria-label="Non-video tabs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a13.5 13.5 0 0 1 0 18M12 3a13.5 13.5 0 0 0 0 18"/></svg></button>
+        <button id="incognitoBtn" class="scroll-nav-btn" title="Select incognito tabs" aria-label="Incognito tabs"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.4 5.4A9.8 9.8 0 0 1 12 5c4 0 7.3 2.3 9 7-.6 1.6-1.4 2.9-2.4 4M6.6 6.6C4.9 7.8 3.7 9.6 3 12c1.7 4.7 5 7 9 7 1.6 0 3.1-.4 4.4-1.1"/></svg></button>
+        <button id="thisWindowBtn" class="scroll-nav-btn" title="Select this window" aria-label="This window"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01"/></svg></button>
+        <button id="shortsBtn" class="scroll-nav-btn" title="Select Shorts" aria-label="Shorts"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17h2"/></svg></button>
+        <button id="invertBtn" class="scroll-nav-btn" data-state="top" title="Invert selection" aria-label="Invert selection"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="inv-top" d="M7 10h14l-4-4"/><path class="inv-bottom" d="M17 14H3l4 4"/></svg></button>
+        <button id="scrollDownBtn" class="scroll-nav-btn nav-jump" title="Next Section" aria-label="Next Section"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l5 5 5-5M7 13l5 5 5-5"/></svg></button>
+      </div>
+    </div>
+
+    <button id="confirmCloseBtn" class="btn-confirm-delete">Confirm & Close Selected Tabs</button>
+    <button id="cancelCloseBtn" class="btn-cancel">Cancel / Back</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
