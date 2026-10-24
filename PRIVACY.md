@@ -1,9 +1,10 @@
-# Privacy policy - Tab Saver for YouTube
+# Privacy policy - YouTube Tab Saver
 
 Last updated: October 24, 2026
 
-Tab Saver for YouTube is a browser extension that saves your open YouTube tabs into a YouTube playlist on your own
-account and helps you close those tabs. This policy explains what it handles and where that information goes.
+YouTube Tab Saver (listed in the extension stores as "Tab Saver for YouTube") is a browser extension that saves your
+open YouTube tabs into a YouTube playlist on your own account and helps you close those tabs. This policy explains
+what it handles and where that information goes.
 
 ## What the extension reads
 

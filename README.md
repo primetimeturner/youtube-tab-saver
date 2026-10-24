@@ -1,8 +1,8 @@
-# Tab Saver for YouTube
+# YouTube Tab Saver
 
-A browser extension for Chrome, Edge, Opera, and other Chromium browsers (shown inside the extension as "YouTube Tab
-Saver"). It saves all your open YouTube tabs into a YouTube playlist, including the videos you lined up with "Add to
-queue", and then lets you choose which tabs to close.
+A browser extension for Chrome, Edge, Opera, and other Chromium browsers (listed in the extension stores as "Tab Saver
+for YouTube"). It saves all your open YouTube tabs into a YouTube playlist, including the videos you lined up with "Add
+to queue", and then lets you choose which tabs to close.
 
 Not affiliated with or endorsed by YouTube or Google.
 
